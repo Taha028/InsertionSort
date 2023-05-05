@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int oper = 0;
+        for(int i = 1; i<nums.size(); i++) {
+            int current = nums[i];
+            int j = i-1;
+            while(j >= 0 && nums[j] >= current) {
+                int diff = nums[j] - current + 1;
+                current += diff;
+                oper += diff;
+                j--;
+            }
+            nums[i] = current;
+        }
+        return oper;
+    }
+};
